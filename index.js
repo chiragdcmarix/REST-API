@@ -3,7 +3,7 @@ import apiRoute from "./routes/api.route.js"
 import homeroute from "./routes/home.route.js"
 
 
-const app = express()
+const app = express() 
 const PORT = 8000
 
 // middleware for handling post data 
