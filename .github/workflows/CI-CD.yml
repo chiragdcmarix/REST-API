@@ -42,4 +42,4 @@ jobs:
           fi
 
       - name: Run the Container
-        run: docker run -d -p 4000:4000 --name rest-api-Container bishal5438/REST-API
+        run: docker run -d -p 4000:4000 --name rest-api-Container bishal5438/rest-api
