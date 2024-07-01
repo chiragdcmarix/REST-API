@@ -33,13 +33,14 @@ jobs:
 
     steps:
       - name: Pull the Docker Image
-        run: docker pull bishal5438/rest-api:latest
+      #It isn't wise to use docker with sudo, Instead we should add current user to docker group. 
+        run: sudo docker pull bishal5438/rest-api:latest 
 
       - name: Delete Old Container
         run: |
           if [ "$(docker ps -q -f name=rest-api-Container)" ]; then
-            docker rm -f rest-api-Container
+            sudo docker rm -f rest-api-Container
           fi
 
       - name: Run the Container
-        run: docker run -d -p 80:80 --name rest-api-Container bishal5438/rest-api
+        run: sudo docker run -d -p 80:80 --name rest-api-Container bishal5438/rest-api
