@@ -3,7 +3,7 @@ FROM node:20-alpine
 
 # Create a working directory inside the container
 WORKDIR /app
-.
+
 # Copy files to the container
 COPY . /app/
 
