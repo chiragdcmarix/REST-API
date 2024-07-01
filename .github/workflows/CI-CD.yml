@@ -23,23 +23,23 @@ jobs:
         run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 
       - name: Build Docker Image
-        run: docker build -t bishal5438/REST-API .
+        run: docker build -t bishal5438/rest-api .
 
       - name: Push to DockerHub
-        run: docker push bishal5438/REST-API:latest
+        run: docker push bishal5438/rest-api:latest
 
   Deploy:
     runs-on: self-hosted
 
     steps:
       - name: Pull the Docker Image
-        run: docker pull bishal5438/REST-API:latest
+        run: docker pull bishal5438/rest-api:latest
 
       - name: Delete Old Container
         run: |
-          if [ "$(docker ps -q -f name=REST-API-Container)" ]; then
-            docker rm -f REST-API-Container
+          if [ "$(docker ps -q -f name=rest-api-Container)" ]; then
+            docker rm -f rest-api-Container
           fi
 
       - name: Run the Container
-        run: docker run -d -p 4000:4000 --name REST-API-Container bishal5438/REST-API
+        run: docker run -d -p 4000:4000 --name rest-api-Container bishal5438/REST-API
