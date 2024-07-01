@@ -6,7 +6,7 @@ import homeroute from "./routes/home.route.js"
 const app = express() 
 const PORT = 8000
 
-// middleware for handling post data 
+// middleware for handling post data   
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
