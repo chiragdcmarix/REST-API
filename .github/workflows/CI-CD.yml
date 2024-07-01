@@ -26,7 +26,7 @@ jobs:
         run: docker build -t bishal5438/rest-api .
 
       - name: Push to DockerHub
-        run: docker push bishal5438/rest-api:latest
+        run: docker push bishal5438/rest-api:latest 
 
   Deploy:
     runs-on: self-hosted
