@@ -1,0 +1,50 @@
+name: CI/CD for Node.js REST-API
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to DockerHub
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
+
+      - name: Build Docker Image
+        run: docker build bishal5438/REST-API .
+
+      - name: Push to DockerHub
+        run: docker push bishal5438/REST-API:latest
+
+      
+  Deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull the Docker Image
+        run: docker pull bishal5438/REST-API:latest
+
+      - name: Delete Old Container
+        run: docker rm -f REST-API-Container
+
+      - name: Run the Container
+        run: docker run -d -p 4000:4000 --name REST-API-Container bishal5438/REST-API 
+
+
+
+
+
+
+    
