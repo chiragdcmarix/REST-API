@@ -3,7 +3,7 @@ name: CI/CD for Node.js REST-API
 
 # Trigger this workflow on push events to the main branch and manual dispatch
 on:
-  push:
+  push: 
     branches: [main]
   workflow_dispatch:
 
