@@ -47,9 +47,8 @@ jobs:
     # Steps to be executed in the Deploy job
     steps:
       # Pull the latest Docker image from DockerHub
-      # It isn't wise to use docker with sudo. Instead, we should add the current user to the docker group.
       - name: Pull the Docker Image
-        run: sudo docker pull bishal5438/rest-api:latest 
+        run: docker pull bishal5438/rest-api:latest 
 
       # Delete the old container if it exists
       - name: Delete Old Container
@@ -60,4 +59,4 @@ jobs:
 
       # Run a new container from the pulled image
       - name: Run the Container
-        run: sudo docker run -d -p 80:80 --name rest-api-Container bishal5438/rest-api
+        run: docker run -d -p 80:80 --name rest-api-Container bishal5438/rest-api
