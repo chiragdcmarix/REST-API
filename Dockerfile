@@ -11,7 +11,7 @@ COPY . /app/
 RUN npm install
 
 # Exposig the port on the container 
-EXPOSE 80
+EXPOSE 83
 
 # Define the command to run the application
 CMD [ "node", "index.js" ]
